@@ -6,23 +6,37 @@
     <script src="./main.js" defer></script>
     <title>Nekos</title>
     <style>
-        main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 50px;
+        body {
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
         }
-        img {
-        width: 1200px;
-        height: 700px;
+        main {
+            display: grid;
+            grid-template-rows: auto 1fr;
+            gap: 50px;
+            width: 100vw;
+            height: 100vh;
+            padding: 30px;
+            box-sizing: border-box;
+            background-color: #000000;
+        }
+        #image {
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: 50%;
+            background-color: #6c6c6c;
         }
     </style>
 </head>
 <body>
     <main>
-        <button onClick=getImage() disabled="false">Fetch</button>
-        <img src="" alt='Loading...' id="image"></img>
+        <nav>
+            <button onClick=getImage() disabled="false">Reload</button>
+        </nav>
+        <div id="image"></div>
     </main>
 </body>
 </html>
