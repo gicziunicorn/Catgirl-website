@@ -13,8 +13,8 @@ const getImage = async () => {
   let image_url = "https://nekos.moe/image/" + id;
 
   imageE.src = `${image_url}`;
+  
   buttonE.disabled = false;
-  a.href = `https://nekos.moe/image/${id}`;
 };
 
 document.onload = getImage();
