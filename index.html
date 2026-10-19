@@ -1,22 +1,26 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./main.js" defer></script>
-    <link rel="stylesheet" href="style.css" />
-    <title>Nekos</title>
-  </head>
-  <body>
-    <main>
-      <nav>
-        <button onClick="getImage()" disabled="false">Reload</button>
-        <input type="checkbox" id="nsfw-toggle"/>
-        <label for="nsfw-toggle">NSFW</label>
-      </nav>
-      <div id="image-cont">
-        <img src="" alt="Loading..." class="real-image" />
-      </div>
-    </main>
-  </body>
-</html>
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="./main.js" defer></script>
+        <link rel="stylesheet" href="style.css" />
+        <title>Nekos</title>
+    </head>
+    <body>
+        <main>
+        <nav>
+            <button onClick="fetchImage()" disabled="false">Reload</button>
+            <input type="checkbox" id="nsfw-toggle"/>
+            <label for="nsfw-toggle">NSFW</label>
+            <select id="site-select" onChange="fetchImage()">
+                <option value="nekosmoe">Nekos.moe</option>
+                <option value="nekosbest">Nekos.best</option>
+            </select>
+        </nav>
+        <div id="image-cont">
+            <img src="" alt="Loading..." class="real-image" />
+        </div>
+        </main>
+    </body>
+    </html>
