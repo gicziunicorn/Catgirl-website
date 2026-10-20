@@ -8,7 +8,6 @@ document.onload = fetchImage();
 
 
 async function fetchImage() {
-    console.log("Fetching image...");
     try {
         buttonE.disabled = true;
         let site = document.getElementById("site-select").value;
