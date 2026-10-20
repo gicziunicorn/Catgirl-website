@@ -60,8 +60,6 @@ a {
   color: white !important;
 }
 
-
-
 /* button */
 button {
   padding: 0.5em 2em;
@@ -75,23 +73,59 @@ button {
   border-radius: 10px;
   user-select: none;
   -webkit-user-select: none;
+
+  &:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: white;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    background-size: 800%;
+    z-index: -1;
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+    width: calc(100% + 16px);
+    height: calc(100% + 16px);
+    animation: glowing-button 15s linear infinite;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+  }
 }
 
-button:before {
-  content: "";
-  background: repeating-linear-gradient(45deg,#ff0000,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#7a00ff,#ff00c8);
-  position: absolute;
-  top: -8px;
-  left: -8px;
-  background-size: 800%;
-  z-index: -1;
-  filter: blur(10px);
-  -webkit-filter: blur(10px);
-  width: calc(100% + 16px);
-  height: calc(100% + 16px);
-  animation: glowing-button 15s linear infinite;
-  transition: opacity 0.3s ease-in-out;
-  border-radius: 10px;
+.disabled {
+  pointer-events: none;
+  cursor: default;
+
+  &::before {
+    background-image: repeating-linear-gradient(45deg, gray, gray) !important;
+  }
+}
+
+button {
+  &:before {
+    background-image: repeating-linear-gradient(
+      45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8
+    );
+  }
 }
 
 @keyframes glowing-button {
@@ -100,29 +134,5 @@ button:before {
   }
   100% {
     background-position: 112.5% 0;
-  }
-}
-
-button:after {
-  z-index: -1;
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: white;
-  left: 0;
-  top: 0;
-  border-radius: 10px;
-}
-
-@keyframes pulse-loading {
-  0% {
-    background-color: #cbd5e1;
-  }
-  50% {
-    background-color: #e2e8f0;
-  }
-  100% {
-    background-color: #cbd5e1;
   }
 }
