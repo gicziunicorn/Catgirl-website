@@ -11,11 +11,13 @@ async function fetchImage() {
     buttonE.classList.add("disabled");
     let site = document.getElementById("site-select").value;
     if (site === "nekosmoe") {
-      await fetchNekosMoe();
+        await fetchNekosMoe();
     } else if (site === "nekosbest") {
-      await fetchNekosBest();
+        await fetchNekosBest();
+    } else if (site === "waifuim") {
+        await fetchWaifuIm();
     } else {
-      throw new Error("Invalid site selected.");
+        throw new Error("Invalid site selected.");
     }
     buttonE.disabled = false;
     buttonE.classList.remove("disabled");
@@ -66,4 +68,31 @@ async function fetchNekosBest() {
   console.log(`Image link: ${image_url}`);
 
   imageE.src = image_url;
+}
+
+async function fetchWaifuIm() {
+    let random_url = `https://api.waifu.im/images?OrderBy=Random&IsNsfw=${nsfwToggle.checked}`;
+
+    const myHeaders = new Headers();
+    myHeaders.append("Accept", "application/json");
+
+    const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow"
+    }
+
+    let res = await fetch(random_url, requestOptions);
+    let json = await res.json();
+
+    if (!res.ok) {
+        throw new Error(
+        `Request failed with code ${res.status}\n${json.detail ? json.detail : "No message provided"}`,
+        );
+    }
+
+    let image_url = json.items[0].url;
+    console.log(`Image link: ${image_url}`);
+
+    imageE.src = image_url;
 }
